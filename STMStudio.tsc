@@ -1,5 +1,5 @@
 #STM Touch Studio user settings - do not edit
-#Sun Mar 31 00:10:26 JST 2019
+#Sun Mar 31 17:06:48 JST 2019
 ExprVariable.Col0ModelIdx=0
 ExprVariable.Col0Width=15
 ExprVariable.Col1ModelIdx=1
@@ -11,7 +11,7 @@ ExprVariable.Col3Width=91
 ExprVariable.Col4ModelIdx=4
 ExprVariable.Col4Width=40
 ExprVariable.Number=0
-GdbVar.ExecDate=1553958565063
+GdbVar.ExecDate=1554019425195
 GdbVar.LastExecRelative=Debug\\PWM-Input.elf
 GdbVar.Version=1
 GeneralPurpose.HorizontalSplit=350
@@ -42,7 +42,7 @@ Log.GuiRate=false
 Log.LittleEndian=true
 Log.MaxConsecutiveCommErrors=10
 Log.MaxConsecutiveHalt=40
-Log.OnlyVariations=false
+Log.OnlyVariations=true
 Log.RawFrame=false
 Log.ReInitComm=true
 Log.Replay=false
@@ -92,11 +92,11 @@ VarViewer.Number=2
 VarViewer.SelectedTab=2
 VarViewer.ShowIndex=false
 VarViewer.Version=4
-VarViewer1.DisplayMode=Curve
+VarViewer1.DisplayMode=Table
 VarViewer1.Hexa=false
 VarViewer1.Name=VarViewer1
 VarViewer1.Range.Low=0.0
-VarViewer1.Range.Up=255.0
+VarViewer1.Range.Up=200.0
 VarViewer1.SecondScreen=false
 VarViewer1.Var.Nb=2
 VarViewer1.Var0.Name=IC_Value

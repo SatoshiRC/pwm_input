@@ -51,7 +51,8 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-uint8_t counter = 0 , IC_Value = 0;
+uint32_t counter = 0 , IC_Value = 0;
+uint8_t n=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,28 +100,26 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 4);
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 4);
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
+  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3,0);
   while(HAL_OK != HAL_TIM_IC_Start_IT(&htim1,TIM_CHANNEL_1));
- // HAL_TIM_IC_Start(&htim1,TIM_CHANNEL_1);
+  uint8_t flag = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t buf='4';
+
   while (1)
   {
-	/*//  while(HAL_OK != HAL_UART_Receive(&huart2,&buf,1,100));
-	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, buf-48);
-	  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, buf-48);
-	  //pwm_data[0] = HAL_TIM_IC_GetState(&htim1) + 48;
-	   */
+	  if(GPIO_PIN_RESET == HAL_GPIO_ReadPin(GPIOC , GPIO_PIN_13) && flag == 0){
+		  n++;
+	  	  flag = 1;
+	  }else if(GPIO_PIN_SET == HAL_GPIO_ReadPin(GPIOC , GPIO_PIN_13)){
+		  flag = 0;
+	  }
 	  counter = __HAL_TIM_GetCounter(&htim1);
-
-
+	  __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3,n);
+	  if(n>255) n=0;
 
 
   /* USER CODE END WHILE */
